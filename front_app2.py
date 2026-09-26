@@ -1,6 +1,15 @@
 import streamlit as st
 import requests
 import time
+import os
+import subprocess
+
+# 自动尝试安装缺失的库
+try:
+    import streamlit_autorefresh
+except ImportError:
+    subprocess.check_call(["pip", "install", "streamlit-autorefresh"])
+    import streamlit_autorefresh
 
 # 💡 新增：设置前端看板每 10 秒自动刷新一次页面（无需手动按 F5）
 from streamlit_autorefresh import st_autorefresh
